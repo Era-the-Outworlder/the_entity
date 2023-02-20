@@ -1,0 +1,5 @@
+charset,UTF-8
+type,balloon
+name,Disrupted Reality
+directory,disrupted_reality
+refresh,1

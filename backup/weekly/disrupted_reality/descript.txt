@@ -1,0 +1,116 @@
+//----Descript.txt----
+
+charset,UTF-8
+use_self_alpha,1
+
+type,balloon
+name,Disrupted Reality 2
+id,Disrupted Reality
+
+craftman,Era
+craftmanw,Era
+craftmanurl,https://era-the-outworlder.github.io/era_makes_ghosts/
+
+homeurl,https://era-the-outworlder.github.io/era_makes_ghosts/
+
+readme,readme.txt
+
+origin.x,14
+origin.y,14
+
+
+
+
+---------------------
+validrect.left,0
+validrect.top,0
+validrect.right,0
+validrect.bottom,-12
+
+wordwrappoint.x,-30
+wordwrappoint.y,0
+
+// font.name,AzoteSSK
+// font.name,Cuneiform
+// font.name,Felina
+// font.name,Underwood1913
+
+//Font made from http://www.onlinewebfonts.com oNline Web Fontsis licensed by CC BY 3.0
+font.name,1785GLCBaskervilleW00-Norm
+font.height,16
+
+font.color.r,255
+font.color.g,255
+font.color.b,255
+
+// font.shadowcolor.r,150
+// font.shadowcolor.g,150
+// font.shadowcolor.b,150
+
+windowposition.x,0
+windowposition.y,0
+
+
+//font.outline,1
+
+anchor.font.color.r,77
+anchor.font.color.g,82
+anchor.font.color.b,194
+
+anchor.pen.color.r,0
+anchor.pen.color.g,0
+anchor.pen.color.b,255
+
+anchor.style,underline
+
+cursor.blendmethod,notmaskpen
+cursor.style,underline
+cursor.brush.color.r,175
+cursor.brush.color.g,175
+cursor.brush.color.b,175
+
+cursor.pen.color.r,100
+cursor.pen.color.g,100
+cursor.pen.color.b,100
+
+cursor.font.color.r,50
+cursor.font.color.g,50
+cursor.font.color.b,50
+
+
+
+// arrow0.x,304
+// arrow0.y,8
+// arrow1.x,304
+// arrow1.y,-18
+
+// onlinemarker.x,8
+// onlinemarker.y,-22
+
+sstpmarker.x,8
+sstpmarker.y,-18
+
+
+sstpmessage.font.height,10
+sstpmessage.font.color.r,200
+sstpmessage.font.color.g,200
+sstpmessage.font.color.b,200
+sstpmessage.x,20
+sstpmessage.y,-20
+
+
+onlinemarker.x,20
+onlinemarker.y,20
+
+number.font.name,Calibri
+// number.font.height,20
+// number.font.color.r,0
+// number.font.color.g,0
+// number.font.color.b,0
+// number.xr,-28
+// number.y,-20
+
+// communicatebox.x,8
+// communicatebox.y,18
+// communicatebox.width,301
+// communicatebox.height,18

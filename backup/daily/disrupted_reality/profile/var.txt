@@ -1,0 +1,4 @@
+Charset,UTF-8
+homeurl_found,1
+homeurl,http://ssp.shillest.net/update/balloon/ssp/
+update_result,NG(404)
