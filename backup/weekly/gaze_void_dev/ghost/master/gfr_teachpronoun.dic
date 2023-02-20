@@ -1,0 +1,160 @@
+//---------------------------Adding Custom Pronouns--------------------------
+//This .dic file has to do with setting the user's pronouns when they aren't she/her, he/him, or epicene they/them.
+//This file is fairly short, and you shouldn't have any reason to change it, beyond tweaking dialogue.
+//I'll probably come back and tweak this over time.
+// <3 Era
+
+
+//--OnTeachCustomPronoun
+//This is called from the config menu in the main character's double click menu when the user says they want to use alternative pronouns.
+OnTeachPronouns
+{
+	"\0\s[0]\_v[trill.wav]What are your pronouns?\w5\n\n[half]\_q/
+	\![*]\q[He-Him-His,choicemasc]\n/
+	\![*]\q[She-Her-Her,choicefem]\n/	
+	\![*]\q[They-Them-Their,choiceneither]\n/
+	\![*]\q[Something else...,choicecustom]\s[0]\_v[trill.wav]\e"
+}
+
+Select.choicemasc
+{
+	
+	presuffix = "masculine"
+	himher = "him"
+	heshe = "he"
+	hisher = "his"
+	mrms = "mister"
+	--
+	"\0\s[0]\_v[trill.wav]Your pronouns are %(heshe), %(himher), and %(hisher).\e"
+	
+	
+}
+
+Select.choicefem
+{
+	presuffix = "feminine"
+	himher = "her"
+	heshe = "she"
+	hisher = "her"
+	mrms = "miss"
+	--
+	"\0\s[0]\_v[trill.wav]Your pronouns are %(heshe), %(himher), and %(hisher).\e"
+	
+		
+}
+
+Select.choiceneither
+{
+	presuffix = "undefine"
+	himher = "them"
+	heshe = "they"
+	hisher = "their"
+	mrms = "friend"
+	--
+		"\0\s[0]\_v[trill.wav]Your pronouns are %(heshe), %(himher), and %(hisher).\n I am glad to be able to refer to you correctly, %(username).\e"
+	
+}
+
+Select.choicecustom //for people with neopronouns or mixed pronouns.
+{
+	presuffix = "open"
+	--
+	"\0\s[0]\_v[trill.wav]What is your Nominative pronoun? (ex. they) \![open,inputbox,OnHeSheTheyTeach,-1]\e"
+}
+
+
+
+// OnTeachCustomPronoun
+// {
+	//Checks origin of function call
+	// if reference0 == "TEACHCUSTOMPRONOUN" 
+		// {
+			// "\0\s[0]\_v[trill.wav]What is your Nominative pronoun? (ex. they) \![open,inputbox,OnHeSheTheyTeach,-1]\e"
+
+		// }
+	// else
+		// {
+
+		// }
+// }
+
+
+//--OnHeSheTheyTeach
+//Actually checks nominative then opens input for oblique/them/him/her pronouns
+
+OnHeSheTheyTeach
+{
+	//this stores the pronoun value temporarily from reference0
+	tempnoun1 = reference0 
+
+	//This is if the user doesn't put in a pronoun at all.
+	if reference0  == "" || reference0 == " " || reference0 == "   "
+	{
+		"\_v[trill.wav]You didn't enter anything, %(username). Let's try that again.\![open,inputbox,OnHeSheTheyTeach,-1]\s[0]\e"
+	}
+	else
+	{
+		"\0\s[0]\_v[trill.wav]What is your Oblique pronoun? (ex. them) \![open,inputbox,OnHimHerThemTeach,-1]\s[0]\e"
+	}	
+}
+OnHimHerThemTeach
+{
+	tempnoun2 = reference0 
+
+	if reference0  == "" || reference0 == " " || reference0 == "   " 
+	{
+		"\_v[trill.wav]You didn't enter anything, %(username). Let's try that again.\![open,inputbox,OnHimHerThemTeach,-1]\s[0]\e"
+	}
+	else 
+	{
+		"\0\s[0]\_v[trill.wav]What is your Possessive pronoun? (ex. their) \![open,inputbox,OnHisHerTheirTeach,-1]\s[0]\e"
+	}
+}
+OnHisHerTheirTeach
+{
+	tempnoun3 = reference0
+
+	if reference0  == "" || reference0 == " " || reference0 == "   " 
+	{
+		"\_v[trill.wav]You didn't enter anything, %(username). Let's try that again.\![open,inputbox,OnHisHerTheirTeach,-1]\s[0]\e"
+	}
+	else
+	{
+		"\_v[trill.wav]* Your pronouns are %(tempnoun1), %(tempnoun2), and %(tempnoun3).\n * Does that seem right? \w5\n\n[half]\_q/
+		\![*]\q[Looks good!,setpronouns]\n/
+		\![*]\q[Let's try that again...,choicecustom]\s[0]\e"	
+	}
+}
+	
+	
+Select.setpronouns
+{
+	presuffix = "open"
+	heshe = tempnoun1
+	himher = tempnoun2
+	hisher = tempnoun3
+	mrms = "friend"
+	--
+	"\0\s[0]\_v[trill.wav]I am glad to be able to refer to you correctly, %(username). \![leave,passivemode]\s[0]\s[0]\e"
+}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

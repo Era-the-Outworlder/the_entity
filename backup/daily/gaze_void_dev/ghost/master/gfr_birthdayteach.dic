@@ -1,0 +1,182 @@
+//~~~~~~~User's Birthday
+//I moved OnGetBirthday and associated functions from menu.dic to a seperate .dic to make it more flexible.
+//At least I think it's better. It's certainly more appealing to me to do it this way. <3 Era
+
+OnGetBirthday	
+{
+	//This is setting up in case today is the user's birthday.
+	dayslot = GetDaySlot 
+	"\0\s[0]\_v[trill.wav]What month were you born? \![open,inputbox,OnUserBornMonth,-1]"
+}
+	
+//----OnUserBornMonth----
+//This takes the value that the user put into the input box above and evaluates it.
+
+OnUserBornMonth
+{
+	_tempmonth = TOSTR(reference0) //this stores what the user put in as a variable called _tempmonth
+	_tempmonth = TOLOWER(_tempmonth) //changes it to lowercase
+	//if the month is a valid month
+	//this is attaching the right value to the input from the user
+	if _tempmonth == "january" || _tempmonth == "1" 
+	{bornmonth = 1; bornmonthprint = "January"}
+	
+	elseif _tempmonth == "february" || _tempmonth == "2"
+	{bornmonth = 2; bornmonthprint = "February"}
+	
+	elseif _tempmonth == "march" || _tempmonth == "3" 
+	{bornmonth = 3; bornmonthprint = "March"}
+	
+	elseif _tempmonth == "april" || _tempmonth == "4" 
+	{bornmonth = 4; bornmonthprint = "April"}
+	
+	elseif _tempmonth == "may" || _tempmonth == "5" 
+	{bornmonth = 5; bornmonthprint = "May"}
+	
+	elseif _tempmonth == "june" || _tempmonth == "6" 
+	{bornmonth = 6; bornmonthprint = "June"}
+	
+	elseif _tempmonth == "july" || _tempmonth == "7" 
+	{bornmonth = 7; bornmonthprint = "July"}
+	
+	elseif _tempmonth == "august" || _tempmonth == "8" 
+	{bornmonth = 8; bornmonthprint = "August"}
+	
+	elseif _tempmonth == "september" || _tempmonth == "9" 
+	{bornmonth = 9; bornmonthprint = "September"}
+	
+	elseif _tempmonth == "october" || _tempmonth == "10" 
+	{bornmonth = 10; bornmonthprint = "October"}
+	
+	elseif _tempmonth == "november" || _tempmonth == "11" 
+	{bornmonth = 11; bornmonthprint = "November"}
+	
+	elseif _tempmonth == "december" || _tempmonth == "12" 
+	{bornmonth = 12; bornmonthprint = "December"}
+	
+	else
+	{
+		
+		"\0\s[0]\_v[trill.wav]Very funny, but I only know of 12 months.\nTry again.\![open,inputbox,OnUserBornMonth,-1]"
+	}
+	
+	--
+			
+	"\0\s[0]\_v[trill.wav]So you were born in %(bornmonthprint).\n\w8What day was it?\![open,inputbox,OnUserBornDay,-1]"
+				
+}
+
+
+
+//This adds an appropriate suffix to the number for the day. No need to mess with this either.
+
+Printday
+{
+	if bornday == 1 || bornday == 21 || bornday == 31
+	{
+	"%(bornday)st"
+	}
+	elseif bornday == 2 || bornday == 22
+	{
+	"%(bornday)nd"
+	}
+	elseif bornday == 3 || bornday == 23
+	{
+	"%(bornday)rd"
+	}
+	else
+	{
+	"%(bornday)th"
+	}
+}	
+
+//----OnUserBornDay----
+//This is much like the above function OnUserBornMonth. It'll take the value the user put in for the day and analyze it.
+
+OnUserBornDay
+{
+	_tempday = reference0 //storing the input in _tempday
+	_tempday = TOLOWER(_tempday) //changes it to lowercase
+	_tempday = REPLACE(_tempday,"st","") //if the user types something like 2nd, 3rd, etc, this will make it just the number. It'll just add the suffix back later on the one that actually shows.
+	_tempday = REPLACE(_tempday,"nd","")
+	_tempday = REPLACE(_tempday,"rd","")
+	_tempday = REPLACE(_tempday,"th","")
+	_tempday = TOINT(_tempday) //Converts it to an integer
+	
+	//Checking Valid dates
+	if bornmonth == 1 || bornmonth == 3 || bornmonth == 5 || bornmonth == 7 || bornmonth == 8 || bornmonth == 10 || bornmonth == 12 
+	{
+		//if it falls in the right range
+		if _tempday >= 1 && _tempday <= 31 
+		{
+			bornday = _tempday
+			borndayprint = Printday
+			userbirthday = "%(bornmonth)month %(bornday)day"
+			birthdayprint = "%(bornmonthprint) %(borndayprint)"
+					
+			"%(birthchecked)"
+		}
+		//if the day isn't valid
+		else 
+		{
+			"\0\s[0]\_v[trill.wav]%(bornmonthprint) only has 31 days... Try again.\![open,inputbox,OnUserBornDay,-1]"
+		}
+	}
+	elseif bornmonth == 2 //if the month is february
+	{
+		if _tempday >= 1 && _tempday <= 29 
+		{
+			bornday = _tempday
+			borndayprint = Printday
+			userbirthday = "%(bornmonth)month %(bornday)day"
+			birthdayprint = "%(bornmonthprint) %(borndayprint)"
+					
+			"%(birthchecked)"
+		}
+		else
+		{
+			"\0\s[0]\_v[trill.wav]%(bornmonthprint) only has 29 days at most, try again.\![open,inputbox,OnUserBornDay,-1]"
+				}
+		}
+		//if it's any other month than those
+	else 
+	{
+		if _tempday >= 1 && _tempday <= 30 //if the day falls between these values
+		{
+			bornday = _tempday
+			borndayprint = Printday
+			userbirthday = "%(bornmonth)month %(bornday)day"
+			birthdayprint = "%(bornmonthprint) %(borndayprint)"
+					
+			"%(birthchecked)"
+		}
+		else
+		{
+			"\0\s[0]\_v[trill.wav]%(bornmonthprint) has 30 days. Try again.\![open,inputbox,OnUserBornDay,-1]"
+		}
+	}		
+}
+
+//----birthchecked----
+
+
+birthchecked
+{
+	//if today is the user's birthday
+	if userbirthday == dayslot 
+	{
+		"\0\s[0]\_v[trill.wav]Happy birthday, %(username).\e"
+		
+	}
+	//Any number of these can be added to check birthdays against holidays
+	elseif userbirthday == "12month 25day"
+	{
+		"\0\s[0]\_v[trill.wav]A Christmas child, huh? Is that a good or bad thing...?\e"
+	}
+	//if the birthday is not listed above.
+	else 
+	{
+		"\0\s[0]\_v[trill.wav]Your birthday is %(bornmonthprint) %(borndayprint). I'll remember.\e"
+			
+	}
+}

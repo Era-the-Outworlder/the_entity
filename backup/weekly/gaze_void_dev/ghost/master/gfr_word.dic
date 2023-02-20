@@ -1,0 +1,94 @@
+﻿//---------Envelopes--------
+
+//----System display related----
+ap
+{
+ 	if ampm
+ 		{"PM"}
+ 	else
+ 		{"AM"}
+}
+
+dishour
+{
+	if hour12 == 0; "12"
+	else; "%(hour12)"
+}
+
+dismin
+{
+	if minute >= 0 && minute <=9; "0%(minute)"
+	else; "%(minute)"
+}
+
+
+dayShort
+{
+	if weekday == 0
+	{"Sun"}
+	elseif weekday == 1
+	{"Mon"}
+	elseif weekday == 2
+	{"Tue"}
+	elseif weekday == 3
+	{"Wed"}
+	elseif weekday == 4
+	{"Thu"}
+	elseif weekday == 5
+	{"Fri"}
+	else
+	{"Sat"}
+}
+
+dayLong
+{
+	if dayShort == "Tue"
+	{"Tuesday"}
+	elseif dayShort == "Wed"
+	{"Wednesday"}
+	elseif dayShort == "Thur"
+	{"Thursday"}
+	elseif dayShort == "Sat"
+	{"Saturday"}
+	else
+	{"%(dayShort)day"}
+}
+
+//~~~~~~~~~~Special Envelopes for Ss&Gs~~~~~~~~~~~~~~
+knownName
+{
+	if nameshared == 1
+	{
+		"Gaze"
+	}
+	else
+	{
+		"The Entity"
+	}
+}
+
+
+exampleenvelope
+{
+	"Example Envelope Dialogue 1"
+	"Example Envelope Dialogue 2"
+	"Example Envelope Dialogue 3"
+}
+
+
+usersfolder
+{
+	"%(username)'s Recycle Bin, Hm."
+	"%(username)'s Document folder.\nIt certainly has documents in it..."
+	"%(username)'s secret folder.\nIt was not very well hidden..."
+
+}
+
+
+//**** Don't touch this **********************************************
+//~~~~Nobody knows what it does...~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+On_\person
+{
+ 	person
+}

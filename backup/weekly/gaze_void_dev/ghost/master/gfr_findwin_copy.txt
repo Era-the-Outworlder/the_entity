@@ -1,0 +1,178 @@
+//Findwin functions
+
+
+
+//Window Class names
+	//----Functions and FME
+	//Calculator = CalcFrame
+	//File Explorer = CabinetWClass
+	//Task Manager = TaskManagerWindow
+	//μTorrent = μTorrent4823DF041B09
+	//GitHub Desktop = Chrome_WidgetWin_1
+	
+	//----Utilities
+	//CCleaner = PiriformCCleaner
+	//Defraggler = PiriformDefraggler
+	
+	
+	//----Comms
+	//Discord = Chrome_WidgetWin_1
+	//Zoom = ZPPTMainFrmWndClassEx
+	
+	//----Browsers
+	//Firefox = MozillaWindowClass
+	//Chrome = Chrome_WidgetWin_1
+	//Brave = Chrome_WidgetWin_1
+	
+	//----Programming/IDEs
+	//Code::Blocks = wxWindowClassNR
+	//Visual Studio Code = Chrome_WidgetWin_1
+	//Ghidra Decompiler = CabinetWClass
+	//Ghidra = SunAwtFrame
+	//Resource Hacker = TMainForm
+	//JetBrains dotPeek = HwndWrapper[Entryway;;980bac01-d58b-4338-937b-781e88448d21]
+	//JustAssembly = HwndWrapper[JustAssembly.exe;;a9118db2-7279-4330-9759-6b7f6a6a8e66]
+	//JustDecompile = HwndWrapper[JustDecompile.exe;;d82b4661-9ce8-44fb-9271-f6577464c67f]
+	//dnSpy = CabinetWClass
+	//dnSpy = HwndWrapper[dnSpy;;568a6bc4-4766-4a87-a755-4e5c542a7b5a]
+	
+	
+	//----Text Editors
+	//Notepad++ = Notepad++
+	//WordPad = WordPadClass
+	//Notepad = Notepad
+	//Scrivener = QT5156WindowIcon
+	//QTranslate = #32770
+	
+	//----Image Editors	/ Modeling
+	//Paint = MSPaintApp
+	//Sai = sfl_window_class = 2368
+	//MediBang Paint Pro = Qt5QWindowIcon
+	//FireAlpaca = Qt5QWindowIcon
+	//(GIMP) GNU Image Manipulation Program = gdkWindowToplevel
+	//Blender = GHOST_WindowClass
+	
+	//----Music
+	//iTunes = iTunes
+	//VLC Media Player = wxWindowClassNR
+	//Winamp = Winamp v1.x
+	//Windows Media Player = WMPlayerApp
+	//MusicBee = WindowsForms10.Window.8.app.0.2bf8098_r7_ad1
+	//Spotify = Chrome_WidgetWin_0
+	
+	//Audacity = wxWindowNR
+	//FL Studio = TFruityLoopsMainForm
+	//AmazingMIDI = Afx:400000:b10003:6:c11831
+	
+	//----Video
+	//OBS = Qt5QWindowIcon
+	//Twitch = Chrome_WidgetWin_1
+	
+	//----Games & Emulators
+	//Steam = vguiPopupWindow
+	//Steam Chat = SDL_app
+	//Undertale/Deltarune = YYGameMakerYY
+	//Bluestacks = Qt5154QWindowIcon
+	//Minecraft Launcher = MCLWindow
+	//Minecraft = GLFW30
+	//Origin = Qt5QWindowIcon
+	//EA = Qt5152QWindowOwnDCIcon
+	
+	
+OnDesktopEyeball
+{
+	"Step 1\e"
+	--
+	_openprograms = IARRAY
+
+	ChromeWid1Open = FUNCTIONEX("findwin.dll","find",,"Chrome_WidgetWin_1")
+	ChromeWid1Min = FUNCTIONEX("findwin.dll","count",,"Chrome_WidgetWin_1")
+	ChromeWid1ID = FUNCTIONEX("findwin.dll","getcaption","Chrome_WidgetWin_1")
+	
+	
+	
+	if ChromeWid1Open >= 1
+	{
+		if "Discord" _in_ ChromeWid1ID
+		{
+		    DiscordMin = FUNCTIONEX("findwin.dll","count","Discord","Chrome_WidgetWin_1")
+			if DiscordMin >= 1
+			{
+			"\0\s[0]Chatting with others, are you?\e"
+			}
+			else
+			{
+			"\0\s[0]Decided to leave them alone?\e"
+			}
+		}
+		// if "Google Chrome" _in_ ChromeWid1ID
+		// {
+			// if ChromeWid1Min == 1
+			// {
+			// "\0\s[0]Browsing The Internet?\e"
+			// }
+			// else
+			// {
+			// "\0\s[0]Hmmm...\e"
+			// }
+		// }	
+		// if "Brave" _in_ ChromeWid1ID
+		// {
+			// if ChromeWid1Min == 1
+			// {
+			// "\0\s[0]Browsing The Internet? With THAT browser?\e"
+			// }
+			// else
+			// {
+			// "\0\s[0]Hmmm... Alright Then\e"
+			// }
+		// }	
+		// if "Visual Studio" _in_ ChromeWid1ID
+		// {
+			// if ChromeWid1Min == 1
+			// {
+			// "\0\s[0]Doing a little programming?\e"
+			// }
+			// else
+			// {
+			// "\0\s[0]Your choice...\e"
+			// }
+		// }
+			else
+			{
+				"Failure \e"
+			}
+	}
+
+	// NPPlusOpen = FUNCTIONEX("findwin.dll","find",,"Notepad++")
+	// NPPlusOpen = FUNCTIONEX("findwin.dll","count",,"Notepad++")
+	// NPPlusOpen = FUNCTIONEX("findwin.dll","getcaption","Notepad++")
+    
+	// if NPPlusOpen == 1 //Checking to see if it's open
+	// {
+		// if "Discord" _in_ DiscordCap //Checks to make certain that this is discord
+		// {
+			// if DiscordMin >= 1 //Checks to make sure it isn't minimized
+			// {
+				// "\0Discord is open.\e"
+			// }
+			// else //If discord is minimized
+			// {
+				// "\0Discord is minimized.\e"
+			// }
+		// }
+		// elseif "Google Chrome" _in_ DiscordCap //Chrome shares a window class with Discord. Now, I will note, Chrome is finicky about showing the caption so I do not recommend using this. But as an example...
+		// {
+			// if DiscordMin > 4 //If you have at least 5 windows open
+			// {
+				// "\0Whoa, you've got a lot of windows open!\e"
+			// }
+			// elseif DiscordMin > 10 //If you're over 10 windows
+			// {
+				// "\0Wow, you're over 10 browser windows.\e"
+			// }
+		// }
+	// }
+}
+
+

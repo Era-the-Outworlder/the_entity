@@ -1,0 +1,68 @@
+﻿//Free or Bound
+
+seriko.alignmenttodesktop,free
+
+
+//General Information
+
+charset,UTF-8
+type,shell
+name,Gaze Default Shell
+craftman,Era
+craftmanurl,http://theoutworlder.tumblr.com
+
+
+//Balloon Co-ordinates
+
+sakura.balloon.offsetx,0
+sakura.balloon.offsety,0
+kero.balloon.offsetx,0
+kero.balloon.offsety,0
+sakura.balloon.alignment,none
+kero.balloon.alignment,none
+
+
+//Shiori Icon
+
+shiori.logo.filename,resources\niseshiori.png
+shiori.logo.x,16
+shiori.logo.y,256
+
+//Menu Background Image Location
+
+menu.background.bitmap.filename,menu_background.png
+menu.foreground.bitmap.filename,menu_foreground.png
+menu.sidebar.bitmap.filename,menu_sidebar.png
+
+//Menu Background Image Alignment
+
+menu.background.alignment,leftbottom+repeat-x+repeat-y
+menu.foreground.alignment,leftbottom+repeat-x+repeat-y
+menu.sidebar.alignment,top
+
+//Menu Font Color
+
+menu.background.font.color.r,0
+menu.background.font.color.g,0
+menu.background.font.color.b,0
+
+
+//Menu Highlighted Text Color
+
+menu.foreground.font.color.r,255
+menu.foreground.font.color.g,255
+menu.foreground.font.color.b,255
+
+
+//Menu Greyed Out Font Color
+
+menu.disable.font.color.r,222
+menu.disable.font.color.g,222
+menu.disable.font.color.b,222
+
+
+//Menu Separate Color
+
+menu.separator.color.r,240
+menu.separator.color.g,240
+menu.separator.color.b,240

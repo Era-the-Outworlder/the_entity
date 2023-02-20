@@ -1,0 +1,33 @@
+﻿//Character Set definitions. Do not change unless absolutely certain and necessary.
+
+charset, UTF-8
+charset.dic, UTF-8
+charset.output, UTF-8
+charset.file, UTF-8
+charset.save, UTF-8
+charset.extension, UTF-8
+
+
+//---- Dictionary Files ---------------------------------------------------------------------
+
+
+include, system_config.txt		
+dic, gfr_string.dic			
+dic, gfr_aitalk.dic			
+dic, gfr_bootend.dic		
+dic, gfr_mouse.dic			
+dic, gfr_etc.dic			
+dic, gfr_menu.dic
+dic, gfr_word.dic
+dic, gfr_commu.dic
+dic, gfr_anchor.dic
+dic, gfr_nameteach.dic
+dic, gfr_birthdayteach.dic
+dic, gfr_teachpronoun.dic
+dic, gfr_findwin.dic
+
+//---- Log Location -------------------------------------------------------------------------
+//Sets the file path of the event log. Seems to be duplicated in other parts of the program
+
+messagetxt,system/messagetxt/english.txt
+log, ayame.log

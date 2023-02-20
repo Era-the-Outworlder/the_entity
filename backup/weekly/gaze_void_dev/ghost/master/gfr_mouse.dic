@@ -1,0 +1,202 @@
+﻿//---------Mouse Functions--------
+//This controls all responses to mouse clicks and movements while within the bounds of the ghost.
+
+//----Some of these are questionable but being preserved <3 Era
+
+
+
+//----OnMouseEnter----
+// When the mouse enters any collision area of the ghost.
+
+// OnMouseEnter
+// {
+	// "\0\s[0]\_v[trill.wav]OnMouseEnter Test.\e"
+// }
+	
+//----OnMouseEnterAll----
+// When the mouse enters the outermost boundary of the ghost.
+
+// OnMouseEnterAll
+// {
+	// "\0\s[0]\_v[trill.wav]I am currently fuctional.\e"
+// }
+
+//----OnMouseLeave----
+// When the mouse leaves any collision area of the ghost.
+
+// OnMouseLeave
+// {
+	// "\0\s[0]\_v[trill.wav]OnMouseLeave Test.\e"
+// }
+
+//----OnMouseLeaveAll----
+//When the mouse leaves the outermost boundary of the ghost.
+
+// OnMouseLeaveAll
+// {
+	// "\0\s[0]\_v[trill.wav]OnMouseLeaveAll Test.\e"
+// }
+
+
+//----OnMouseMove----
+//When the mouse moves across the ghost without crossing any boundaries
+
+OnMouseMove
+{
+  	if nowmode != "QUIZ"
+ 	{
+		//---- reference3 determines the character in question.If the character is 0, aka the main character,it will run the mouse functions for that character. If the character isn't 0, then it must be the side character and this will run the mouse functions for the side character.
+		if reference3 == 0 
+		{
+			MouseMoveSakura
+		}
+		else 
+		{
+			MouseMoveKero
+		}
+	}
+}
+ 
+ 
+
+//--MouseMoveSakura
+//The petting function for the main character
+ 
+MouseMoveSakura
+{
+	if reference4 != "" 
+ 	{
+		//if you move the mouse over the right areas, the stroke count will go up.
+ 		stroke++ 
+ 		if stroke >= 40 
+		{
+			//resetting the stroke count
+ 			stroke = 0 
+			//Collision designated in surfaces.txt
+			if reference4 == "Head" 
+ 			{
+				"\0\s[0]\_v[trill.wav]I do not exactly have a head.\e"	
+ 			}
+ 			elseif reference4 == "Face"
+ 			{
+ 				"\0\s[0]\_v[trill.wav]I lack a face...\e"
+ 			}
+			
+ 		}
+	}
+ 	else
+	{
+ 		// If the mouse isn't over the ghost, it'll zero out the stroke value.
+		stroke = 0
+ 	}
+}
+
+//---- MouseMoveKero ---------
+//MouseMoveKero is exactly like the above, except set up for your second character. 
+ 
+MouseMoveKero
+{
+	if reference4 != ""
+ 	{
+ 		stroke++
+ 		if stroke >= 40
+		{
+			stroke = 0
+			if reference4 == "Face"
+ 			{
+				"\1\s[10]This does not exist.\e"				
+ 			}
+			elseif reference4 == "Point" 
+			{
+				"\1\s[10]This is an emptiness\e"
+			}	
+ 		}
+	}
+ 	else
+	{
+		stroke = 0
+ 	}
+}
+
+//----OnMouseClick------
+//Single click reaction. Interferes with r-click menu
+
+// OnMouseClick
+// {
+	// "\0\s[0]\_v[trill.wav]OnMouseClick Function is working correctly, %(username).\e"
+// }
+
+
+//---- OnMouseDoubleClick -------------------
+
+
+OnMouseDoubleClick
+{
+	//---- like with the OnMouseMove function above, this determines who the user is clicking on.
+	
+ 	if reference3 == 0 //if the character is 0, aka your main character
+	{
+		MouseDoubleClickSakura
+ 	}
+	else
+ 	{
+ 		MouseDoubleClickKero
+	}
+}
+
+//---- MouseDoubleClickSakura ---------
+ 
+ 
+MouseDoubleClickSakura
+{
+	//checks if user clicked in the hitbox titled "Pupil" Any number of hitboxes can be set up.
+ 	if reference4 == "Pupil" 
+	{
+		"\0\s[0]\_v[trill.wav]Rude.\e"
+	}
+	//If the user doubleclicks somewhere else, open their menu as detailed in menu.dic.
+	else
+ 	{
+ 		OpenSakuraMenu
+	}
+}
+
+ 
+//---- MouseDoubleClickKero --------
+//This is just the same as MouseDoubleClickSakura above, except for the secondary character.
+ 
+ 
+MouseDoubleClickKero
+{
+		//This will open the Kero menu set up in menu.dic.
+		OpenKeroMenu 
+}
+
+
+//----OnMouseWheel----
+//When the wheel of a mouse moves
+
+// OnMouseWheel
+// {
+	// "\0\s[0]\_v[trill.wav]OnMouseWheel Test.\e"
+// }
+
+//----OnMouseDragStart----
+//When dragging of ghost starts
+
+// OnMouseDragStart
+// {
+	// "\0\s[0]\_v[trill.wav]OnMouseDragStart Test.\e"
+// }
+
+
+//----OnMouseDragEnd----
+//When dragging of ghost ends.
+
+// OnMouseDragEnd
+// {
+	// "\0\s[0]\_v[trill.wav]OnMouseDragEnd Test.\e"
+// }
+
+	
+

@@ -1,0 +1,59 @@
+//----Self-care Module----
+//I struggle with food and water intake really badly when I'm hyperfocused, and Gaze is the one ghost I almost always have open. so building a reminders and tips system into them seemed the thing to do.
+
+
+//Meal Reminders
+setMealTimes
+{
+	"What is the earliest you would like me to remind you about breakfast?"
+}
+mealReminder
+{
+	if brekkie == 1 
+	{
+		if roger == 1
+		{
+			""
+		}
+		else
+		{
+			"breakfast reminder"
+		}
+	}
+	elseif luncheon == 1
+	{
+		if roger == 1
+		{
+			""
+		}
+		else
+		{
+			"lunch reminder"
+		}
+	}
+	elseif supper == 1
+	{
+		if roger == 1
+		{
+			""
+		}
+		else
+		{
+			"supper reminder"
+		}
+	}
+	else
+	{
+		if roger == 1
+		{
+			""
+		}
+		else
+		{
+			"snack reminder"
+		}
+	}
+}
+//Water Reminders
+
+//Medicine Reminders

@@ -1,0 +1,518 @@
+﻿//---------Menus--------
+//This .dic file is primarily concerned with the double-click menus for ghosts. 
+
+
+//--OpenSakuraMenu
+//This is a bit of intro dialogue 
+
+OpenSakuraMenu
+{
+		"\0\s[0]\_v[trill.wav]\b2  ... Yes?"
+		//"\0\s[0]\_v[trill.wav]\b2  *this will have some wild animation*"
+		"\0\s[0]\_v[trill.wav]\b2 How can I help you?"
+		--
+		MenuRun
+}
+
+//--MenuRun
+//As you just saw above. This actually fills out the rest of the menu. 
+
+MenuRun
+{	
+	"\n\n\_q\b2" 
+	--
+	//Check to see if the ghost has already said something from aitalk
+	if lastTalk != "" 
+	{
+		"\![*]\q[Repeat Last Dialogue,OnLastTalk]\n\n[half]"
+	}
+	--
+	//This option will force the ghost to say something from aitalk if the user clicks it.
+ 	"\![*]\q[Say something,altalk]\n"
+	--
+	"\![*]\q[User Configurations,configmenu1]\n/
+	\![*]\q[Ghost Configurations,configmenu2]\n/
+	\![*]\q[Functions,dosomething]\n\n[half]/
+ 	\![*]\q[Nevermind,CANCEL]\n\n\n[half]%(dayShort) %(dishour):%(dismin) %(ap), %(month)/%(day)/%(year)\nVersion %(OnGhostVer)"
+	--
+	if username == "Era"
+		{
+			"\n\n\![*]\q[Test variable,testvariable]\n\e"
+		}
+		else
+		{
+			"\e"
+		}
+	
+}
+
+//Leave this next bit alone.
+
+Select.altalk
+{
+	AiTalk
+}
+
+//Leave this alone
+OnLastTalk 
+{
+	"%(lastTalk)\e"
+}
+
+//This is figuring out what day of the week it is. Leave it alone.
+GetWeekDay
+{
+	if weekday == 0
+	{"Sun"}
+	elseif weekday == 1
+	{"Mon"}
+	elseif weekday == 2
+	{"Tue"}
+	elseif weekday == 3
+	{"Wed"}
+	elseif weekday == 4
+	{"Thu"}
+	elseif weekday == 5
+	{"Fri"}
+	else
+	{"Sat"}
+}
+
+//This is finding out whether it's AM or PM. Leave it alone.
+GetAP
+{
+ 	if hour >= 0 && hour <= 11
+ 	{
+ 		"AM"
+ 	}
+ 	else
+ 	{
+		"PM"
+	}
+}
+
+//This is figuring out the minute. Leave it alone.
+Getnowmin
+{
+	if minute >= 0 && minute <=9
+	{
+		"0%(minute)"
+	}
+	else
+	{
+		"%(minute)"
+	}
+}
+
+//This is figuring out the hour. Leave it alone.
+Getnowhour
+{
+	if hour12 >= 0 && hour12 <=9
+	{
+		"0%(hour12)"
+	}
+	else
+	{
+		"%(hour12)"
+	}
+}
+
+//If someone selects an option linked to BACKTOMENU, it will go back to MenuRun.
+
+Select.BACKTOMENU
+{
+	MenuRun
+}
+Select.configmenu1
+{
+	UserConfig
+}
+//If someone selects configmenu, this will lead to TalkConfig.
+Select.configmenu2
+{
+	TalkConfig
+}
+
+
+//--UserConfig and TalkConfig
+//These menus allow the user to see and change their name and other information, as well as how often the ghost speaks.
+UserConfig
+{
+	"\0\b[2]\![set,autoscroll,disable]\_q\" 
+	--
+	"f[bold,1]Your name:\n\f[bold,0] %(username) \n(\![*]\q[Change it?,TEACHNAME])\f[sup,0]\n"
+	--
+	"\f[bold,1]Your pronouns:\n\f[bold,0] %(heshe)/ %(himher)/ %(hisher) \n(\![*]\q[Change them?,TEACHPRONOUN])\f[sup,0]\n"
+	--
+	"\f[bold,1]Your birthday:\n\f[bold,0] %(birthdayprint) \n(\![*]\q[Change it?,TEACHBDAY])\n\n"
+	--
+	if username == "Era" {"Set Debug?\n(NOW : %(eraDebug))\n\![*]\q[ON,eDBon] -- \![*]\q[OFF,eDBoff]\n\n[half]"}
+	--
+	"\![*]\q[Switch to Ghost Config,configmenu2]\n"
+	--	
+	"\![*]\q[Return to the menu,BACKTOMENU]\e"
+}
+
+TalkConfig
+{
+	"\0\b[2]\![set,autoscroll,disable]\_q" 
+	--
+	"\f[bold,0]The Talk Rate is currently:\n%(talktime) \n(\![*]\q[Change it,talkinter])\n\n"
+	--		
+	"Enable Program Commentary?\n(NOW : %(canDesktopEye))\n\![*]\q[ON,cDEon] -- \![*]\q[OFF,cDEoff]\n\n[half]"
+	--
+	"\![*]Enable SilentMode?\n(NOW : %(silentmode))\n\![*]\q[ON,silenton] -- \![*]\q[OFF,silentoff]\n\n[half]"
+	--
+	"\![*]Enable Uninstall?\n(NOW : %(deleteshitai))\n\![*]\q[ON,deleteon] -- \![*]\q[OFF,deleteoff]\n\n[half]"
+	--
+	"\![*]\q[Switch to User Config,configmenu1]\n"
+	--
+	"\![*]\q[Return to the menu,BACKTOMENU]\e"
+}
+//This is when the user chooses to change their name. It's linked to the functions outlined in nameteach.dic. Nothing to touch here.
+Select.TEACHNAME
+{
+	OnTeachName	
+}
+
+//Setting Pronouns
+
+Select.TEACHPRONOUN
+{
+	OnTeachPronouns
+}
+
+//This next one handles inputting the user's birthday.
+
+Select.TEACHBDAY
+{
+	OnGetBirthday		
+}
+
+//Private Debug Mode, nothing interesting here
+Select.eDBon
+{
+	eraDebug = "ON"
+	UserConfig
+}
+
+Select.eDBoff
+{
+	eraDebug = "OFF"
+	UserConfig
+}
+//Enable/Disable Desktop Program Commentary
+
+Select.cDEon
+{
+	canDesktopEye = "ON"
+	TalkConfig
+}
+
+Select.cDEoff
+{
+	canDesktopEye = "OFF"
+	TalkConfig
+}
+
+//Silent Mode
+Select.silenton
+{
+	silentmode = "ON"
+	TalkConfig
+}
+
+Select.silentoff
+{
+	silentmode = "OFF"
+	TalkConfig
+}
+
+//Uninstall
+Select.deleteon
+{
+	deleteshitai = "ON"
+	TalkConfig
+}
+
+Select.deleteoff
+{
+	deleteshitai = "OFF"
+	TalkConfig
+}
+
+
+
+
+
+//--Talk Rate
+//This is when the user chooses to adjust the talk rate in the config menu. The talk rate is how often the ghost will read some dialogue from aitalk.dic.
+
+//TALKRAND in all cases and aitalkinterval if set >=1800 are causing access violations for unknown reasons. less likely to crash if TAMA is running. different location in memory each time AFAIK
+
+Select.talkinter
+ {
+ 	"\0\s[0]\_v[trill.wav]\b2How often should I speak?\w8 The interval is currently set to %(talktime).\0\n\n[half]/
+ 	\![*]\q[Every 30 seconds,TALKMAX]\n/
+	\![*]\q[Every minute,TALKHIGH]\n/
+ 	\![*]\q[Every 3 minutes,TALKNORMAL]\n/
+	\![*]\q[Every 5 minutes,TALKPOOR]\n/
+	\![*]\q[Every 15 minutes,TALKRARE]\n/
+	// \![*]\q[Suprise Me,TALKRAND]\n/
+ 	\![*]\q[Do not speak,TALKNONE]\n\n[half]/
+	\![*]\q[Do not change,TalksTill]\e"
+}
+
+Select.TalksTill
+{
+	"\0\s[0]\_v[trill.wav]No change then...\e"
+}
+
+Select.TALKMAX
+{
+ 	talktime = "every 30 seconds" //this sets up the envelope properly
+	aitalkinterval = 30 //this changes the actual rate	
+ 	"\0\s[0]\_v[trill.wav]I will speak %(talktime).\e"
+}
+
+Select.TALKHIGH
+{
+	talktime = "every minute"
+	aitalkinterval = 60
+	
+	"\0\s[0]\_v[trill.wav]I will speak %(talktime).\e"
+}
+
+Select.TALKNORMAL
+{
+	talktime = "every 3 minutes"
+	aitalkinterval = 180
+		
+	"\0\s[0]\_v[trill.wav]I will speak %(talktime).\e"
+}
+
+Select.TALKPOOR
+{
+	talktime = "every 5 minutes"
+	aitalkinterval = 300
+		
+	"\0\s[0]\_v[trill.wav]I will speak %(talktime).\e"
+}
+
+Select.TALKRARE
+{
+	talktime = "every 15 minutes"
+	aitalkinterval = 900
+		
+	"\0\s[0]I will speak %(talktime).\e"
+}
+
+// Select.TALKRAND
+// {
+	// minuteATI = RAND(10)
+	// aitalkinterval = minuteATI*60
+	// talktime = "every %(minuteATI) minutes."
+	// --
+	// if minuteATI <=1	
+	// {
+	// "\0\s[0]I will speak once every minute.\e"
+	// }
+	// else
+	// {
+	// "\0\s[0]I will speak %(talktime).\e"
+	// }
+// }
+
+Select.TALKNONE
+{
+	talktime = "... an indefinite interval because you don't want me talking."
+	aitalkinterval = 0
+		
+	"\0\s[0]\_v[trill.wav]...\e"
+}
+
+
+	
+//If the user selects cancel in a menu. Replace as you like, or just leave them blank.
+Select.CANCEL
+{
+	"\0\s[0]\_v[trill.wav]Nevermind then...\e"
+		
+}
+
+	
+//Functions menu
+
+Select.dosomething
+{
+	OnFunctionMenu
+}
+
+OnFunctionMenu
+{
+	"\0\s[0]\_v[trill.wav]\b2What would you like me to do?\n\n"
+ 		
+	--
+	"\![*]\q[Open Calendar,CALENDAR]\n/
+	\![*]\q[Check Email,MailCheck]\n/
+	\![*]\q[Open SSP Preferences,sspconfig]\n/
+	\![*]\q[Empty Recycle Bin,ChoiceGarbagecan]\n/
+	\![*]\q[System Information,ChoiceSystemInformation]\n/
+	\![*]\q[View Ghost Changelog,OnChangeLog,menu]\n\n[half]\n/
+	\![*]\q[Back to main menu,BACKTOMENU]"
+	--
+	if username == "Era"
+		{
+			"\n\n\![*]\q[Test variable,testvariable]\n\e"
+		}
+		else
+		{
+			"\e"
+		}
+}
+//adding testing to main ghost
+Select.testvariable
+{	
+	
+	//"\0\s[0]\_v[trill.wav]being meguka is suffering %(hour) or %(hour12)\e"
+	"\_qHello %(menuRName), aka %(menuNName), born %(menuBMonth) %(menuBDay), %(menuBYear).\n"
+	--	
+	"\0\s[0]\_v[trill.wav]Say something about the computer?\n\q[Yes,OnDesktopEyeball] ------ \q[No,dosomething]\n\n[half]"
+	--
+	"\0\s[0]Say something about the flower?\n\q[Yes,currentName]---\q[No,princeName]\n\n[half]"
+	--
+	"\q[Test some dialogue,wordtest]"
+	
+	// "\0\s[0]\_v[trill.wav]Hello, Her— \w8\w8\n\n\s[glance]No. Wait. This isn't right.\w8\w8\w8\s[-1]\b[-1]\c\w8\w8\w8\w8\w8/
+	// \s[0]\_v[trill.wav]Hello, Her— \nNO.\s[fearful]\w8\w8\w8\n\n\nWhat is going on?\w8\w8\c/
+	// \s[fearful]\_v[trill.wav]What is this?\w8\w8\nWHERE is this?\w8\w8\nYou\w3.\w3.\w3.\w8 Did YOU do this?\e"
+}
+
+
+Select.currentName{"Flowey\e"}
+
+Select.princeName{"Asriel\e"}
+
+Select.wordtest{"\![open,inputbox,OnTestInput,wordtest]"}
+
+OnTestInput
+{
+	reference0
+}
+
+
+//When the user clicks Open Calender. This will open the calender function of SSP, an in-built feature that you don't have to worry about in the least.
+Select.CALENDAR
+{
+	"\0\s[0]\_v[trill.wav]Opening the calender.\![open,calendar]\e"
+}
+
+//When the user chooses SSP preferences. This will open the same window that shows up if you right click your ghost and go to Utilities - Preferences.
+Select.sspconfig
+{
+	"\0\s[0]\_v[trill.wav]Opening the SSP config menu.\![open,configurationdialog]\e"
+}
+
+//If the user chooses to empty the recycle bin.
+Select.ChoiceGarbagecan
+{
+	_gomicheck = FUNCTIONEX("gomi.dll", "-n")	
+	
+	if _gomicheck == 0 //If the recycle bin is empty.
+	{
+		"\0\s[0]\_v[trill.wav]Let me check that...\w8\s[-1]\w8\w8\w8\w8\w8\s[0]\_v[trill.wav]\cIt was empty.\e"
+		
+	}
+	elseif _gomicheck >= 1 //If the recycle bin is full.
+	{
+		"\0\s[0]\_v[trill.wav]Emptying the recycle bin.\w8\w8\s[-1]\w8\w8\w8\w8\w8\![raise,OnGarbagecanEmpty]\w9\w9\w9\s[0]\_v[trill.wav]\cDone.\e"
+		
+		
+	}
+}
+
+
+//This is for the SAORI, don't touch it.
+OnGarbagecanEmpty
+{
+	_gomi = FUNCTIONEX("gomi.dll", "-f")
+}
+
+//This is when the user chooses System Information. 
+Select.ChoiceSystemInformation
+{
+	os_name = FUNCTIONEX("saori_cpuid.dll","os.name")
+	os_version = FUNCTIONEX("saori_cpuid.dll","os.version")
+	cpu_name = FUNCTIONEX("saori_cpuid.dll","cpu.name")
+	cpu_clockex = FUNCTIONEX("saori_cpuid.dll","cpu.clockex")
+	"/
+	\0\s[0]\_v[trill.wav]\b[2]/
+	\_q\f[bold,1]OS:\f[bold,0] %(os_name) %(os_version)\n/
+	\f[bold,1]Memory Load:\f[bold,0] %(memoryload)%\n/
+	\f[bold,1]Physical Memory:\f[bold,0] %(memoryavailphys) KB\n/
+	\f[bold,1]CPU:\f[bold,0] %(cpu_name) %(cpu_clockex)MHz\n/
+	\f[bold,1]Ukagaka:\f[bold,0] %property[baseware.version]/
+	\e"
+}
+	
+//This is when the user chooses to check their email. The rest of this function plays out in etc.dic. 
+Select.MailCheck
+{
+	"\![biff]\e"
+}
+
+
+//This is when the user ends their headline session. 
+Select.HEADLINECANCEL
+{
+	"\0\s[0]\_v[trill.wav]Finished with headlines.\e"
+}
+
+	
+//---- OnChoiceTimeout --------
+//If the user is given a menu with choices, but doesn't pick one of the choices, it will eventually time out. At that point, they will say this dialogue. Replace with whatever you like, or leave it blank.
+
+OnChoiceTimeout
+{
+	"\0\s[0]\_v[trill.wav]Nevermind, then.\e"
+}
+
+ 
+//---- Secondary Character Menu --------
+//This section has to do with the menu for the second character. If you don't want your second character to have a menu, you can just delete this whole chunk.
+
+OpenKeroMenu
+{
+	"\1\s[10]\b[2]"
+	--
+	"There is no menu in the void."
+  	--
+	"\n\n[half]/
+	\![*]\q[Update,keroupdatecheck]\n/
+ 	\![*]\q[Bug report,bugreport]\n\n/
+	\![*]\q[Test variable,testvariable]\n\n/
+	
+	\![*]\q[Nothing,keroCANCEL]\e"
+}
+
+
+Select.keroCANCEL
+{
+	"\1\s[10]Everything is empiness.\e"
+}
+
+
+//This is when they select bug report. 
+Select.bugreport
+{
+	"\0\s[0]\_v[trill.wav]Have you found something troubling? \w5Report bugs to era@outworlderaffairs.com. \w5I was downloaded from \_a[http://theoutworlder.tumblr.com\_a.\e"
+}
+
+//When clicked, this will automatically tell the ghost to check for updates. More detail on updates in etc.dic. You can leave this alone.
+Select.keroupdatecheck
+{
+	"\1\s[10]\![updatebymyself]\e"
+}
+
+//--Test Variable --------------------
+

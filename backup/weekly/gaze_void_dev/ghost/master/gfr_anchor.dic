@@ -1,0 +1,55 @@
+//---------Anchors and OnTranslate--------
+
+OnTranslate
+{
+    _talk = reference0
+    _talk = REPLACE(_talk, "bugreport(at)outworlderaffairs.com","\_a[bugmail]bugreport@outworlderaffairs.com\_a")        
+    if silentMode == "ON"
+    {
+        _talk = REPLACE(_talk, "\_v[", "\![sound,stop,")
+		--
+		"%(_talk)"
+    }
+    
+    if reference1 == "" && reference2 == ""
+    { //send input box : no event (ref2) , no special flag (ref1)
+        EVAL('"' + REPLACE(_talk,'"','" + CHR(0x22) + "') + '"')
+    }
+    else
+    { //event result from ghost
+        TOSTR(_talk)
+    }
+}
+	
+//----OnAnchorSelect----
+//OnAnchorSelect runs whenever someone clicks one of the links as specified above, or a link that begins with http://.
+//Not sure why this uses case and when statements instead
+
+OnAnchorSelect
+{
+	//checking to see if the link is a web address
+	if "http://" _in_ reference0 
+	{
+		// opens url in the user's browser of choice.
+		"\j[%(reference0)]\e" 
+	}
+	else //NaWebsite
+	{
+		case reference0 
+		{
+			//if the link is this value
+			when "anchor1" 
+			{
+				"\0\s[0]\_v[trill.wav]This dialogue is for when Anchor 1 is clicked.\e"
+			}
+			when "anchor2" 
+			{
+				"\0\s[0]\_v[trill.wav]This dialogue is for when Anchor 2 is clicked.\e"
+			}
+			when "anchor3" 
+			{
+				"\1\s[10]This dialogue is for when Anchor 3 is clicked.\e"
+			}
+		}
+	}
+}

@@ -1,0 +1,681 @@
+﻿
+///////// Ghost Template Script
+///////// String resource dictionary
+///////// written by umeici.
+
+//----- English Translation <3 Era 2019.09.10
+//----- SSP Draw Menu Captions added 2019-2021
+//----- Script reordered by Era 2021
+
+//---------------------------Strings--------------------------
+
+
+
+//---- Username -------------------------------
+On_username
+{
+	username
+}
+//----SSP Menu Items----
+
+//Menu items have been reordered according to actual order in menu, for clarity
+
+On_recommendrootbutton.caption
+{
+	"&Recommendations"
+}
+//---- Top Menu Option ----
+
+
+On_sakura.recommendsites
+{
+	
+	"Ghost Template Walkthrough"
+	--
+	"%ASC(1)http://www.ashido.com/ukagaka/walkthrough.html%ASC(2)"
+	--
+	
+	"Zarla's LJ"
+	--
+	"%ASC(1)http://zarla.livejournal.com/%ASC(2)"
+	--
+	
+	"Zarla's Tumblr"
+	--
+	"%ASC(1)http://zarla-s.tumblr.com/%ASC(2)"
+	--
+	
+	"Zarla's Dreamwidth"
+	--
+	"%ASC(1)http://zarla.dreamwidth.org/%ASC(2)"
+	--
+	
+	"Ukagaka Webring Hub"
+	--
+	"%ASC(1)https://ukagakawebring.netlify.app/%ASC(2)"
+	--
+	
+	"SSP"
+	--
+	"%ASC(1)http://ssp.shillest.net/%ASC(2)"
+	--
+	
+	"Crow + SSP Reference (J)"
+	--
+	"%ASC(1)http://crow.aqrs.jp/reference/all/index.html%ASC(2)"
+	--
+	
+	"Ghost Documentation (J)"
+	--
+	"%ASC(1)http://usada.sakura.vg/contents/specification.html%ASC(2)"
+	--
+	
+	"Disc-2 (J)"
+	--
+	"%ASC(1)http://disc2.s56.xrea.com/%ASC(2)"
+	
+} 
+
+//---- The second option from the top ----
+
+
+On_portalrootbutton.caption
+{
+	"Por&tal Site"
+}
+
+//---- Websites in the Second Option ----
+ 
+On_sakura.portalsites
+{
+ 	"Tumblr"
+	"THAT ONE PLACE"
+	--
+	"%ASC(1)http://theoutworlder.tumblr.com %ASC(2)"
+	--
+	
+	"Twitter"
+	--
+	"%ASC(1) https://twitter.com/theoutworlder %ASC(2)"
+	--	
+	
+	"Deviantart"
+	--
+	"%ASC(1) http://baobhan-sith.deviantart.com %ASC(2)"
+	--
+	
+	"Outworlderaffairs.com"
+	--
+	"%ASC(1) http://www.outworlderaffairs.com %ASC(2)"
+	
+	
+}
+
+
+//---- Update Menu Caption ------------------
+ 
+On_updatebutton.caption
+{
+	
+	"Check for Updates"
+	
+	
+}
+//----  Network Update URL  ------
+//On_homeurl
+//{
+//	"http://unvollendet.hp.infoseek.co.jp/ukagaka/kousin2/"
+//}
+
+
+//---- Uninstall Caption -----------------------------------------------------
+ 
+On_vanishbutton.caption
+{
+	"Uninstall"
+}
+
+
+//---- Headlines and RSS Feeds ---------------------------------------------------------
+
+On_headlinesenserootbutton.caption
+{
+	"Headlines + RSS"
+
+}
+
+//----Plugins----
+On_pluginrootbutton.caption
+{
+	"&Plugins"
+	
+}
+//----Check Mail (BIFF)----
+
+On_biffbutton.caption
+{
+	"Check &Mail"
+	//"Check e-&mail"
+}
+
+//----Shell Scaling---------------------------------------
+
+On_shellscalerootbutton.caption
+{
+	"Sh&ell Scaling"
+}
+
+//Additional Settings (Same as Ghost Preferences) Not Found
+
+On_shellscaleotherbutton.caption
+{
+	"&Other Percentage"
+}
+//----Baloon Scaling
+
+On_balloonscalerootbutton.caption
+{
+	"Balloon Scaling (&D)"
+}
+
+On_balloonscaleotherbutton.caption
+{
+ ""
+}
+
+//----Utilities---------------------------------------------
+
+On_utilityrootbutton.caption
+{
+	"Utilities (&F)"
+	
+}
+
+On_calendarbutton.caption
+{
+	"&Calendar"
+}
+
+On_messengerbutton.caption
+{
+	"SSP &Messenger"
+}
+
+On_sntpbutton.caption
+{
+	"&NTP Time Sync"
+}
+
+On_ghostexplorerbutton.caption
+{
+	"&Explorer"
+	//"Ghost &Explorer"
+}
+
+On_updateplatformbutton.caption
+{
+	"Check SSP &Updates"
+}
+
+//Speech Recognition (&T)
+//On_dictationbutton.caption
+
+On_recognitionbutton.caption
+{
+	"Speech Recognition (&T)"
+}
+
+//&Voice Synthesis
+On_texttospeechbutton.caption
+{
+	"&Voice Synthesis"
+}
+On_addressbarbutton.caption
+{
+	"&Address Bar"
+}
+
+//Open FIle (&I)
+On_openfilebutton.caption
+{
+	"Open FIle (&I)"
+}
+
+
+//Open Folder (&F)
+
+On_openfolderbutton.caption
+{
+	"Open Folder (&F)"
+}
+
+On_scriptlogbutton.caption
+{
+	"Script &Log"
+}
+
+On_duibutton.caption
+{
+	"&Development Interface"
+}
+
+On_purgeghostcachebutton.caption
+{
+	"Purge &Ghost Cache"
+}
+
+On_updatefmobutton.caption
+{
+	"&FMO Update"
+}
+
+On_reloadinfobutton.caption
+{
+	"&Reload Extension Folders"
+}
+
+On_switchreloadbutton.caption
+{
+	"Rel&oad Ghost"
+}
+
+On_leavepassivebutton.caption
+{
+	"Reset &Passive Mode"
+}
+
+On_switchreloadtempghostbutton.caption
+{
+	"&Keep Temporary Ghost"
+}
+
+On_switchmovetodefaultpositionbutton.caption
+{
+	"Reset S&hell Position"
+}
+
+On_resetballoonpositionbutton.caption
+{
+	"Reset Balloo&n Position"
+}
+
+On_closeballoonbutton.caption
+{
+	"Hide All &Balloons"
+}
+
+
+
+//----Options----
+
+
+On_configurationrootbutton.caption
+{
+	"&Options"
+}
+
+On_configurationbutton.caption
+{
+	"&Preferences...?"
+}
+
+//Ghost Preferences...
+
+
+On_switchproxybutton.caption
+{"Enable Pro&xy"}
+
+On_charsetbutton.caption
+{"Set Default &Charset"}
+
+
+
+On_switchtalkghostbutton.caption
+{"Raise AITalk from &SHIORI"}
+
+On_switchcompatiblemodebutton.caption
+{"&Old Specification Support"}
+
+
+On_ghostrootbutton.caption
+{
+	"Change Ghost"
+}
+ 
+ 
+On_callghostrootbutton.caption
+{
+	"Call Ghost"
+}
+
+
+On_shellrootbutton.caption
+{
+	"Change Shell"
+}
+
+
+On_dressuprootbutton.caption
+{
+	"&Clothes/Dress Up"
+}
+
+On_balloonrootbutton.caption
+{
+	"&Balloon"
+}
+
+
+//----History-----------------
+
+On_historyrootbutton.caption
+{
+	"History (&Y)"
+}
+
+On_ghosthistorybutton.caption
+{
+	"Change &Ghost"
+}
+
+On_callghosthistorybutton.caption
+{
+	"Call Ghosts (&Z)"
+}
+
+On_balloonhistorybutton.caption
+{
+	"&Balloon"
+}
+
+On_headlinesensehistorybutton.caption
+{
+	"&Headline"
+}
+
+On_pluginhistorybutton.caption
+{
+	"&Plugin"
+}
+
+
+
+
+//---- Information ----
+
+On_inforootbutton.caption
+{
+	"Inform&ation"
+}
+
+On_firststaffbutton.caption
+{
+	"&About SSP"
+}
+
+On_readmebutton.caption
+{
+	"READ ME"
+	"readme.txt"
+}
+
+//"Terms of This Ghost" caption cannot be found
+
+On_helpbutton.caption
+{
+	"&Help"
+}
+
+On_aistatebutton.caption
+{
+	"&AI Graph"
+}
+
+On_rateofusebutton.caption
+{
+	"Ghost Usage Statistics(&R)"
+}
+
+On_systeminfobutton.caption
+{
+	"Output &System Information"
+}
+
+
+
+//Language caption cannot be changed
+
+On_hidebutton.caption
+{
+	"&Iconify"
+}
+
+On_closebutton.caption
+{
+	"Close (&W)"
+}
+
+On_quitbutton.caption
+{
+	"Quit"
+}
+
+ 
+//---- Top Menu Option in the Second Character ----
+
+
+On_kero.recommendbuttoncaption
+{
+	"Recommended Sites"
+}
+
+//---- Top Menu Websites for the Second Character ----
+
+ 
+On_kero.recommendsites
+{
+	"A Site"
+	--
+	"%ASC(1)http://www.asite.com/%ASC(2)"
+	--
+	"Another Site"
+	--
+	"%ASC(1)http://anothersite.org/%ASC(2)"
+}
+
+//TESTING
+
+On_kero.testbuttoncaption
+{
+	"Testing"
+}
+
+
+//---- 3+ Character ----
+
+On_char3.recommendsitescaption
+{
+	"Reccomended Sites"
+}
+
+On_char3.recommendsites
+{
+	"Nothing"
+}
+
+
+
+ //---- Uninstall Options visibility On/Off ----
+On_vanishbutton.visible
+ {
+ 	if deleteshitai == "ON"
+ 	{
+	"1"
+	}
+	else
+	{
+	"0"
+	}
+}
+
+//---- Get other active ghost names -------------------------------------------------------
+On_otherghostname
+{
+	// Create a list of currently active ghosts
+	ghostexlist = ""
+	_i = 0
+	while _i >= 0 
+	{
+		_ghostname = NAMETOVALUE("reference%_i")
+		if _ghostname != "" 
+		{
+			if _i > 0; ghostexlist += ","
+			ghostexlist += _ghostname[0]
+			_i++
+		}
+		else; _i = -1
+	}
+	ghostexcount = ARRAYSIZE(ghostexlist)
+}
+
+//---- SHIORI Information ------------------------------------------------------------------
+On_version
+{
+	GETSETTING(AYAINFO_VERSION)
+}
+
+On_craftman
+{
+	"umeici"
+}
+
+On_craftmanw
+{
+	"梅市"
+}
+
+On_name
+{
+	"AYA"
+}
+
+//---- Owned SSTP made with uniqueid ------------------------------------------------------
+On_uniqueid
+{
+	uniqueid = reference0
+}
+
+//----hwnd Get ------------------------------------------------------------------------
+On_hwnd
+{
+	sakurahwnd    = reference0[0]
+	kerohwnd      = reference0[1]
+	sakurablnhwnd = reference1[0]
+	keroblnhwnd   = reference1[1]
+}
+
+//---Crow/Materia Only
+
+/* 
+On_activaterootbutton.caption
+{""}
+
+On_collisionvisiblebutton.caption
+{""}
+
+On_debugballoonbutton.caption
+{""}
+
+On_definedsurfaceonlybutton.caption
+{""}
+
+On_enableballoonmovebutton.caption
+{""}
+
+On_ghostinstallbutton.caption
+{""}
+
+On_rateofuserootbutton.caption
+{""}
+
+On_rateofuseballoonbutton.caption
+{""}
+
+On_rateofusetotalbutton.caption
+{""}
+
+On_regionenabledbutton.caption
+{""}
+
+On_resettodefaultbutton.caption
+{""}
+
+On_switchactivatewhentalkbutton.caption
+{""}
+
+On_switchactivatewhentalkexceptupdatebutton.caption
+{""}
+
+On_switchautobiffbutton.caption
+{""}
+
+On_switchautoheadlinesensebutton.caption
+{""}
+
+On_switchblacklistingbutton.caption
+{""}
+
+On_switchconsolealwaysvisiblebutton.caption
+{""}
+
+On_switchconsolevisiblebutton.caption
+{""}
+
+On_switchdeactivatebutton.caption
+{""}
+
+On_switchdontactivatebutton.caption
+{""}
+
+On_switchdontforcealignbutton.caption
+{""}
+
+On_switchduivisiblebutton.caption
+{""}
+
+On_switchforcealignfreebutton.caption
+{""}
+
+On_switchforcealignlimitbutton.caption
+{""}
+
+On_switchignoreserikomovebutton.caption
+{""}
+
+On_switchlocalsstpbutton.caption
+{""}
+
+On_switchquietbutton.caption
+{""}
+
+On_switchremotesstpbutton.caption
+{""}
+
+On_switchrootbutton.caption
+{""}
+
+On_alignrootbutton.caption
+{""}
+
+On_alwaysstayontopbutton.caption
+{""}
+
+On_alwaystrayiconvisiblebutton.caption
+{""}
+
+On_biffallbutton.caption
+{""}
+
+On_callsstpsendboxbutton.caption
+{""}
+*/

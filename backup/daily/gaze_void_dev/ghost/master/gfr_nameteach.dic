@@ -1,0 +1,178 @@
+﻿//---------The User's Name--------
+//This .dic file has to do with setting the user's name and suffix/prefix. 
+
+//----OnTeachName----
+//This is called from the config menu in the main character's double click menu when the user says they want to change their name. 
+
+OnTeachName	
+{
+	if reference0 == "TEACHNAME"
+	{
+		"\![enter,passivemode]\0\s[0]\_v[trill.wav]You would like to change your name? What would you like for me to call you?\![open,inputbox,OnNameTeach,-1]\e"
+		
+	}
+	else
+	{
+		
+	}
+}
+
+
+//----OnNameTeach----
+//This is where the user inputs their name and the ghost analyzes it. 
+
+OnNameTeach
+{
+	//this stores the name value temporarily in reference0
+	_tempname = reference0 
+	
+	//this checks to see if the user input a variant of this ghost's name 
+	if reference0 == "Gaze" || reference0 == "gaze" 
+	{
+		"\0\s[0]\_v[trill.wav]That's my name... That might be confusing.\n/
+		\![*]\q[Change it.,TEACHNAME]\n/
+		\![*]\q[It's fine.,CANCEL]\n\s[0]\_v[trill.wav]\e"
+	
+	}
+	//Check to see if name is spaces
+	elseif reference0 == "" || reference0 == " " || reference0 == "   " 
+	{
+		username = "NULL" 
+		
+		"\0\s[0]\_v[trill.wav]You didn't enter anything. I could call you NULL...\n/
+		\![*]\q[Change it.,TEACHNAME]\n/
+		\![*]\q[It's fine.,CANCEL]\n\s[0]\_v[trill.wav]\e"
+	}
+	//These next couple check the name against certain slurs. I want to figure out a more efficient way to do this.
+	elseif reference0 == "fag" || reference0 == "Fag" || reference0 == "FAG" 
+	{
+		username = "Fuckstick" 
+		
+		"\0\s[0]\_v[trill.wav]Hmmm.... No. I'd rather call you %(username).\e"
+	}	
+	elseif reference0 == "faggot" || reference0 == "Faggot" || reference0 == "FAGGOT" 
+	{
+		username = "Fuckstick" 
+		
+		"\0\s[0]\_v[trill.wav]Hmmm.... No. I'd rather call you %(username).\e"
+	}	
+	//checks against existing username
+	elseif reference0 == username 
+	{
+
+		
+		"\0\s[0]\_v[trill.wav]That IS your name. Would you like to change something else? \w4\n\n[half]/
+		\![*]\q[Yes,titlechoose]\n/
+		\![*]\q[No,titlenone]\n"
+		
+		
+	}
+	//if the user put in something not specified above, i.e. a proper name the ghost can use. 
+	else 
+	{
+		username = _tempname
+		"\0\s[0]\_v[trill.wav]Would you like to be called by a title? \w4\n\n[half]/
+		\![*]\q[Yes,titlechoose]\n/
+		\![*]\q[No,titlenone]\n"
+	}
+}
+Select.titlechoose
+{
+	//this value was defined in bootend.dic and menu.dic when the user chose their pronouns. Thus, if someone chose he/him pronouns, he would be able to choose Mr. or Master.
+	if presuffix == "masculine" 
+	{
+		"\![*] \q[Mr.,titlemr]\n/
+		\![*] \q[Master,titlemaster]\n"
+	}
+	
+	//Likewise, if someone chose she/her pronouns, they could choose Ms.,Mrs., or Lady.
+	elseif presuffix == "feminine" 
+	{
+		"\![*] \q[Ms.,titlems]\n/
+		\![*] \q[Mrs.,titlemrs]\n/
+		\![*] \q[Lady,titlelady]\n"
+	}
+		
+	// Again, I'm fairly certain this works <3Era
+	elseif presuffix == "open" 
+	{
+		"\![*] \q[Mr.,titlemr]\n/
+		\![*] \q[Master,titlemaster]\n/
+		\![*] \q[Ms.,titlems]\n/
+		\![*] \q[Mrs.,titlemrs]\n/
+		\![*] \q[Lady,titlelady]\n"
+	}
+	else
+	{
+		""
+	}
+	-- 
+	//the titles after this are gender neutral and will appear for all users. 
+	"\![*] \q[Mx.,titlemx]\n/
+	\![*] \q[-ssi,titlessi]\n/
+	\![*] \q[-san,titlesan]\n/
+	\![*] \q[I changed my mind,titlenone]\s[0]\_v[trill.wav]\e"
+}
+
+	
+Select.titlenone
+{
+	NameDone
+}
+
+Select.titlemr
+{
+	username = "Mr. " + username
+	NameDone
+}
+
+Select.titlemaster
+{
+	username = "Master " + username
+	NameDone
+}
+		
+Select.titlems
+{
+	username = "Ms. " + username
+	NameDone
+}
+
+Select.titlemrs
+{
+	username = "Mrs. " + username
+	NameDone
+}
+
+Select.titlelady
+{
+	username = "Lady " + username
+	NameDone
+}
+
+Select.titlemx
+{
+	username = "Mx. " + username
+	NameDone
+}
+
+Select.titlessi
+{
+	username = username + "-ssi"
+	NameDone
+}
+
+Select.titlesan
+{
+	username = username + "-san"
+	NameDone
+}
+
+//----NameDone----
+//Acts as a final confirmation of the username
+
+NameDone
+{
+	"\0\s[0]\_v[trill.wav]I will now call you %(username).\![leave,passivemode]\e"
+		
+}

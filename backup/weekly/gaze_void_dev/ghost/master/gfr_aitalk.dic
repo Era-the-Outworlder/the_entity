@@ -1,0 +1,409 @@
+﻿//---------AI Talk--------
+
+//----AiTalk----
+//Determines whether or not ghost is currently in a chain.
+
+AiTalk
+{
+	if RAND(100) < communicateratio
+ 	{
+ 		StartCommunicate
+	}
+ 	else
+	{
+ 		if mikireflag == 0
+		{
+			if CHAIN.IDName == "" 
+			{
+ 				lastTalk = RandomTalk
+			}
+			else 
+			{
+				lastTalk = ChainTalk
+			}
+			lastTalk
+		}
+ 		else
+		{ 
+			MikireTalk
+ 		}
+	}
+}
+
+
+//----RandomTalk ----
+//----Randomized Dialogue----
+//--Rules (By Quonit)
+
+// You can change the size of text using \f[height,(number, or the word default).
+ // \f[strike,true] makes the words struck out.
+ // \f[strike,defualt] resets the text to defualt.
+ // \f[sub,true] makes text subscript.
+ // \f[sub,default] resets text to normal.
+ // \f[sup,true] makes text superscript.
+ // \f[sup,false] makes the text normal again.
+ // \f[underline,true] underlines text.
+ // \f[underline,default] removes the line from under the text.
+ // \f[bold,true] makes your statement bold.
+ // \f[bold,false] makes the text not so bold.
+ // \f[italic,true] makes text slanted.
+ // \f[italic,false] de-slants the text.
+ // \f[color0-255,0-255,0-255] changes the color of the text.
+ // \f[color,default] will return the color to default.
+ // \f[default] returns everything back to normal.
+ // \_a[[http://www.website.com/](put text here)\_a can link a website in dialogue.
+ // \0\s[0]\1\s[0]\_s(put dialogue here) has characters say dialogue at the same time.
+ // The envelope %(username)
+ // The envelope %(heshe)
+ 
+//Envelopes
+ //%(userfolder)
+
+//SURFACE GUIDE
+//put all your surfaces here with a word or two on what they are
+
+RandomTalk : nonoverlap
+{
+	
+
+	
+	
+//----Double Envelopes----
+		
+	{	
+		//Here, the envelope "usersfolder" is stored as a new value called _folders. 
+		_folders = usersfolder 
+		//The first part of the envelope's list
+		_folder = _folders[0] 
+		//This is the second item on the list,
+		_comment = _folders[1] 
+	
+		"\0\s[0]\_v[trill.wav]Oh, I've found %(_folder). \n\w8What's inside...? \n%(_comment).\e"
+	}
+	
+		
+	
+	
+//----All conditional dialogue below this point----~
+
+//----Program Commentary
+	if canDesktopEye == "ON"
+	{
+		OnDesktopEyeball
+	}
+//----Shell commentary
+	if nowshell == "Gaze Default Shell" 
+	{
+		"\0\s[0]\_v[trill.wav]Hmmm..."	
+	}
+	
+	if nowshell == "Hypothetical Shell that doesn't actually exist"
+	{
+		"Did you name it that just for the joke?"
+	}
+	
+//----Month Comments----	
+	if month == 1
+	{
+		" It is the first month of the year, if I recall correctly.\e"
+	}
+	if month == 2
+	{
+		"\0\s[0]\_v[trill.wav]It is the second month of the year, if I recall correctly\e"
+	}
+	if month == 3
+	{
+		"\0\s[0]\_v[trill.wav]It is the third month of the year, if I recall correctly\e"
+	}
+	if month == 4
+	{
+		"\0\s[0]\_v[trill.wav]It is the fourth month of the year, if I recall correctly\e"
+	}
+	if month == 5
+	{
+		"\0\s[0]\_v[trill.wav]It is the fifth month of the year, if I recall correctly\e"
+	}
+	if month == 6
+	{
+		"\0\s[0]\_v[trill.wav]It is the sixth month of the year, if I recall correctly\e"
+	}
+	if month == 7
+	{
+		"\0\s[0]\_v[trill.wav]It is the seventh month of the year, if I recall correctly\e"
+	}
+	if month == 8
+	{
+		"\0\s[0]\_v[trill.wav]It is the eighth month of the year, if I recall correctly\e"
+	}
+	if month == 9
+	{
+		"\0\s[0]\_v[trill.wav]It is the ninth month of the year, if I recall correctly\e"
+	}
+	if month == 10
+	{
+		"\0\s[0]\_v[trill.wav]It is the tenth month of the year, if I recall correctly\e"
+	}
+	if month == 11
+	{
+		"\0\s[0]\_v[trill.wav]It is the eleventh month of the year, if I recall correctly\e"
+	}
+	if month == 12
+	{
+		"\0\s[0]\_v[trill.wav]It is the twelfth month of the year, if I recall correctly\e"
+	}
+	if month >= 13
+	{
+		"\0\s[0]\_v[trill.wav]Either the world is not what I remember...\w8\w8\nOr something is terribly wrong with your computer.\e"
+	}
+	
+//----Day of Week comments
+	if weekday <= -1
+	{
+		"\0\s[0]\_v[trill.wav]Something is very wrong...\e"
+	}
+	if weekday == 1
+	{
+		"\0\s[0]\_v[trill.wav]It is the first day of the week as you count them.\e"
+	}
+	if weekday == 2
+	{
+		"\0\s[0]\_v[trill.wav]It is the second day of the week as you count them.\e"
+	}
+	if weekday == 3
+	{
+		"\0\s[0]\_v[trill.wav]It is the third day of the week as you count them.\e"
+	}
+	if weekday == 4
+	{
+		"\0\s[0]\_v[trill.wav]It is the fourth day of the week as you count them.\e"
+	}
+	if weekday == 5
+	{
+		"\0\s[0]\_v[trill.wav]It is the fifth day of the week as you count them.\e"
+	}
+	if weekday == 6
+	{
+		"\0\s[0]\_v[trill.wav]It is the sixth day of the week as you count them.\e"
+	}
+	if weekday == 0
+	{
+		"\0\s[0]\_v[trill.wav]It is the seventh day of the week as you count them.\e"
+	}
+	if weekday >= 7
+	{
+		"\0\s[0]\_v[trill.wav]Either your world is not what I know it to be...\w8\w8\nOr something is terribly wrong with your computer.\e"
+	}
+	
+//----Timeslot. will probably deprecate
+	if timeslot == "earlymorning"
+	{
+		"\0\s[0]\_v[trill.wav]It is early...\e"
+	}
+	if timeslot == "morning"
+	{
+		"\0\s[0]\_v[trill.wav]It is morning...\e"
+	}	
+	if timeslot == "lunch"
+	{
+		"\0\s[0]\_v[trill.wav]It is approximately time for lunch...\e"
+	}
+	if timeslot == "afternoon"
+	{
+		"\0\s[0]\_v[trill.wav]It is after noon...\e"
+	}
+	if timeslot == "evening"
+	{
+		"\0\s[0]\_v[trill.wav]It is evening...\e"
+	}
+	if timeslot == "latenight"
+	{
+		"\0\s[0]\_v[trill.wav]It is late at night...\e"
+	}
+	if timeslot == "weehours"
+	{
+		"\0\s[0]\_v[trill.wav]It is after midnight...\e"	
+	}	
+	
+//----Chain Dialogue Intros
+	if RAND(100) >= 80
+	{
+		"\0\s[0]\_v[trill.wav]No. This is wrong./
+		\s[0]\e:chain=firstchain"
+		
+		if RAND(100) >= 49
+		{
+			"\0\s[0]\_v[trill.wav]No. This can't be right./
+			\s[0]\e:chain=secondchain"
+		}
+		else
+		{
+			"\0\s[0]\_v[trill.wav]No. this is wrong./
+			\s[0]\e:chain=thirdchain"
+		}
+	}
+}
+
+
+//----Chained Dialogue----
+
+firstchain
+{{CHAIN
+	"\0\s[0]\_v[trill.wav]Here is the second part of the chain.\w8\w4Will there be more?\e:chain=end"
+}}CHAIN
+
+
+secondchain
+{{CHAIN
+	"\0\s[0]\_v[trill.wav]This is the second piece of chained dialogue.\w8This will lead to another.\e:chain=secondchain2"
+}}CHAIN
+
+secondchain2
+{{CHAIN
+	"\0\s[0]\_v[trill.wav]This is the end of the second piece of chained dialogue.\e:chain=end"
+}}CHAIN
+
+thirdchain
+{{CHAIN
+	"\0\s[0]\_v[trill.wav]This is the third piece of chained dialogue.\w8This is the end.\e:chain=end"
+}}CHAIN
+
+
+
+//----More Time Functions----
+HourCheck
+{
+if passmin >= 59
+	{
+		passmin = 0
+		passhour = passhour + 1
+	}
+}
+
+//----OnMinuteChange----
+//----Time related dialogue using the OnMinuteChange function
+
+OnMinuteChange
+{
+	timeslot = GetTimeSlot 
+	--
+ 	if minute == 0
+	{
+ 		if hour == 12
+		{
+ 			"\0\s[0]\_v[trill.wav]It's noon.\e"
+		}
+		elseif hour == 0
+		//Hour is zero, aka midnight.
+		{
+ 			"\0\s[0]\_v[trill.wav]It's midnight.\e"
+		}
+		else
+		{
+			//%(hour12) stores the time in 12-hour format. This is a general top of the hour notification. 
+			"\0\s[0]\_v[trill.wav]It is %(hour12) 'o clock.\e" 
+		}
+	}
+	elseif minute == 30
+	{
+		"\0\s[0]\_v[trill.wav]It is half past %(hour12) \e"
+	}
+	elseif minute == 55 && hour == 23 
+	{
+		"\0\s[0]\_v[trill.wav]5 minutes to midnight.\e"
+	}
+	//I am not sure what this does, so I am not messing with it.
+	elseif mikireflag == 1
+ 	{
+ 		MikireTalk
+	}
+}
+
+//----OnSecondChange----
+//Like the above, this handles what happens every time a second goes by. Most of this you will not have to touch.
+
+OnSecondChange
+{
+	if passsec == 59
+ 		{
+	 	passsec = 0
+ 		passmin = passmin + 1
+		}
+ 	else
+ 		{
+	 	passsec = passsec + 1
+		}
+	if mikireflag == 1 && reference1 == 0
+		{
+			EndMikireTalk
+ 		}
+		mikireflag = reference1
+	if reference2 == 1 //Two characters -sakura and kero- overlap
+	{
+ 		"\1\s[10]\_s Somehow I am...\nDespite the fact that your resolution is %screenwidthx%screenheight, %(username).\nOne of us will move\1\s[10]\4\e"
+		
+ 		"\0\s[0]\_v[trill.wav] Somehow I am in the void...\nDespite the fact that your resolution is %screenwidthx%screenheight, %(username).\nOne of us will move\4\e"
+	}
+}
+
+//---- MikireTalk ---------------
+//----~If ghost is partially off screen----
+ 
+MikireTalk
+{
+	"\0\s[0]\_v[trill.wav]I've been moved off screen, %(username). You can push Ctrl-Shift-F12 to bring me back."
+}
+
+//----EndMikireTalk--------------
+//For after you bring the character back on screen.
+ 
+EndMikireTalk
+{
+	"\0\s[0]\_v[trill.wav]Thank you.\e"
+}
+
+
+//----OnSurfaceRestore----
+//----Restores ghost to default postitions----
+OnSurfaceRestore
+{
+ 	//if reference0 == 4 || reference0 == 6 //This is checking what poses they are in. This looks to see if Girl is in pose 4 or pose 6, since she is reference0.
+ 	//{
+ 	//"\1\s[10]You're in a sad pose.\w8\0\s[0]\_v[trill.wav]I'll go back to normal then.\e"
+ 	//}
+ 	//elseif reference1 == 14 || reference1 == 16 //This is doing the same but for Triangle, since he's reference1. It looks to see if he's in pose 14 or post 16.
+ 	//{
+ 	//"\0\s[0]\_v[trill.wav]You look sad.\w8\w4I'll go back to normal.\e"
+ 	//}
+ 	//else
+ 	//{
+	"\0\s[0]\1\s[10]\e"
+	//}
+}
+
+ 
+//----OnKeyPress----
+//----~~Sets hotkeys----
+ 
+OnKeyPress
+{
+	if reference0 == "t"
+	{
+		OnAiTalk
+	}
+	elseif reference0 == "r"
+	{
+		OnLastTalk
+	}
+	elseif reference0 == "f4"
+	{
+		OnClose
+	}	
+	elseif reference0 == "o"
+	{
+		OnOtherGhostTalk
+	}
+	elseif reference0 == "f1"
+	{
+		"\![open,readme]"
+	}
+}
